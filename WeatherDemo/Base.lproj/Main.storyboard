@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
+    </dependencies>
+    <scenes>
+        <!--Weather Display View Controller-->
+        <scene sceneID="ufC-wZ-h7g">
+            <objects>
+                <viewController id="vXZ-lx-hvc" customClass="WeatherDisplayViewController" customModule="WeatherDemo" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
+                        <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="123.45" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vdA-ba-AaL">
+                                <rect key="frame" x="193" y="228" width="215" height="86"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="72"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9ju-sf-tkT">
+                                <rect key="frame" x="282" y="351" width="36" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Summary" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="alu-s7-S4J">
+                                <rect key="frame" x="263" y="322" width="75" height="21"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="9ju-sf-tkT" firstAttribute="centerX" secondItem="alu-s7-S4J" secondAttribute="centerX" constant="-0.5" id="Him-kH-Ddj"/>
+                            <constraint firstItem="alu-s7-S4J" firstAttribute="top" secondItem="vdA-ba-AaL" secondAttribute="bottom" constant="8" id="Ic0-jn-fVS"/>
+                            <constraint firstItem="9ju-sf-tkT" firstAttribute="top" secondItem="alu-s7-S4J" secondAttribute="bottom" constant="8" id="UCn-EJ-lag"/>
+                            <constraint firstAttribute="centerY" secondItem="vdA-ba-AaL" secondAttribute="centerY" constant="29" id="gCn-rE-RMN"/>
+                            <constraint firstAttribute="centerX" secondItem="vdA-ba-AaL" secondAttribute="centerX" constant="-0.5" id="rbs-cU-lEk"/>
+                            <constraint firstItem="alu-s7-S4J" firstAttribute="centerX" secondItem="vdA-ba-AaL" secondAttribute="centerX" id="wfd-ng-VqL"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="dateLabel" destination="9ju-sf-tkT" id="ewa-oc-wuf"/>
+                        <outlet property="summaryLabel" destination="alu-s7-S4J" id="Wcg-0s-Gvi"/>
+                        <outlet property="temperatureLabel" destination="vdA-ba-AaL" id="XhL-gj-Lhn"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="210" y="652"/>
+        </scene>
+    </scenes>
+</document>

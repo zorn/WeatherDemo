@@ -4,6 +4,7 @@ class WeatherDisplayViewController : UIViewController {
 
     var weatherService: WeatherService?
     var currentReport: WeatherReport?
+    var dateFormatter: NSDateFormatter?
     
     @IBOutlet weak var temperatureLabel: UILabel!
     @IBOutlet weak var summaryLabel: UILabel!
@@ -13,6 +14,9 @@ class WeatherDisplayViewController : UIViewController {
     
     override func viewDidLoad() {
         weatherService = WeatherService()
+        dateFormatter = NSDateFormatter()
+        dateFormatter?.dateStyle = NSDateFormatterStyle.MediumStyle
+        dateFormatter?.timeStyle = NSDateFormatterStyle.NoStyle
         super.viewDidLoad()
     }
     
@@ -36,8 +40,10 @@ class WeatherDisplayViewController : UIViewController {
     func updateUI() {
         if let report = currentReport {
             dispatch_async(dispatch_get_main_queue(), {
-                // TODO add other values with formatters
+                let displayTemp = String(format: "%.0f", report.temperature)
+                self.temperatureLabel.text = "\(displayTemp)°"
                 self.summaryLabel.text = report.summary
+                self.dateLabel.text = self.dateFormatter?.stringFromDate(report.time)
             })
         }
     }

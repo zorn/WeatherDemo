@@ -9,8 +9,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         window = UIWindow(frame: UIScreen.mainScreen().bounds)
         window?.backgroundColor = UIColor.whiteColor()
-        let menu = launchMenu()
-        let launchMenuVC = LaunchMenuViewController(launchMenu: menu)
+        
+        let launchMenuVC = LaunchMenuViewController(style: .Grouped)
+        launchMenuVC.launchMenu = launchMenu()
+
         let navVC = UINavigationController(rootViewController: launchMenuVC)
         window?.rootViewController = navVC
         window?.makeKeyAndVisible()

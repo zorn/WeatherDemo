@@ -2,27 +2,7 @@ import UIKit
 
 class LaunchMenuViewController: UITableViewController, UITableViewDataSource, UITableViewDelegate {
     
-    let launchMenu: LaunchMenu
-    
-    override convenience init() {
-        self.init(launchMenu: LaunchMenu(sections: []))
-    }
-    
-    required init(launchMenu: LaunchMenu) {
-        self.launchMenu = launchMenu
-        super.init(style: .Grouped)
-    }
-    
-    required init(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    // Need this to prevent runtime error:
-    // fatal error: use of unimplemented initializer 'init(nibName:bundle:)'
-    // I made this private since users should use the no-argument constructor.
-//    private override init(nibName nibNameOrNil: String!, bundle nibBundleOrNil: NSBundle!) {
-//        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-//    }
+    var launchMenu: LaunchMenu?
     
     // MARK - UIViewController
     
@@ -35,19 +15,43 @@ class LaunchMenuViewController: UITableViewController, UITableViewDataSource, UI
     // MARK: - UITableViewDataSource
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return launchMenu.sections.count
+        if let menu = launchMenu {
+            return menu.sections.count
+        } else {
+            return 0;
+        }
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return launchMenu.sections[section].items.count;
+        if let menu = launchMenu {
+            return menu.sections[section].items.count;
+        } else {
+            return 0;
+        }
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let item = launchMenu.sections[indexPath.section].items[indexPath.row]
-        let cell = tableView.dequeueReusableCellWithIdentifier("Basic", forIndexPath: indexPath) as UITableViewCell
-        cell.textLabel.text = item.title
-        cell.detailTextLabel?.text = item.details
-        return cell
+        var returnCell: UITableViewCell?
+        if let item = launchMenu?.sections[indexPath.section].items[indexPath.row] {
+            if let cell = tableView.dequeueReusableCellWithIdentifier("Basic", forIndexPath: indexPath) as? UITableViewCell {
+                cell.textLabel?.text = item.title
+                cell.detailTextLabel?.text = item.details
+                cell.accessoryType = .DisclosureIndicator
+                return cell
+            }
+        }
+        
+        if returnCell == nil {
+            returnCell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "Bug")
+            returnCell?.textLabel?.text = "Could not build cell for item at indexPath: \(indexPath)"
+        }
+        return returnCell!
+    }
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        if let item = launchMenu?.sections[indexPath.section].items[indexPath.row] {
+            item.runAction()
+        }
     }
     
 }

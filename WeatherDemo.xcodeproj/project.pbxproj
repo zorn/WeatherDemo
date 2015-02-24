@@ -19,6 +19,7 @@
 		1A0EFFD51A9BCF4F0041181E /* WeatherService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A0EFFD41A9BCF4F0041181E /* WeatherService.swift */; };
 		1A0EFFD91A9BE2DD0041181E /* WeatherReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A0EFFD81A9BE2DD0041181E /* WeatherReport.swift */; };
 		1A2847311A9C248400D5C72D /* LaunchMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2847301A9C248400D5C72D /* LaunchMenu.swift */; };
+		1A6ABA551A9D2CEE0020D7DB /* LaunchMenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1A6ABA541A9D2CEE0020D7DB /* LaunchMenuViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +49,7 @@
 		1A0EFFD41A9BCF4F0041181E /* WeatherService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WeatherService.swift; path = Source/WeatherService.swift; sourceTree = "<group>"; };
 		1A0EFFD81A9BE2DD0041181E /* WeatherReport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WeatherReport.swift; path = Source/WeatherReport.swift; sourceTree = "<group>"; };
 		1A2847301A9C248400D5C72D /* LaunchMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LaunchMenu.swift; path = Source/LaunchMenu.swift; sourceTree = "<group>"; };
+		1A6ABA541A9D2CEE0020D7DB /* LaunchMenuViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LaunchMenuViewController.xib; path = Source/LaunchMenuViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +75,7 @@
 			children = (
 				1A0EFFB61A9BCF1B0041181E /* WeatherDisplayViewController.swift */,
 				1A02F9BD1A9C1AC60032E483 /* LaunchMenuViewController.swift */,
+				1A6ABA541A9D2CEE0020D7DB /* LaunchMenuViewController.xib */,
 			);
 			name = Screens;
 			sourceTree = "<group>";
@@ -242,6 +245,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1A6ABA551A9D2CEE0020D7DB /* LaunchMenuViewController.xib in Resources */,
 				1A0EFFBA1A9BCF1B0041181E /* Main.storyboard in Resources */,
 				1A0EFFBF1A9BCF1B0041181E /* LaunchScreen.xib in Resources */,
 				1A0EFFBC1A9BCF1B0041181E /* Images.xcassets in Resources */,

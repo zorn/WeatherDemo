@@ -18,6 +18,7 @@
 		1A0EFFCB1A9BCF1B0041181E /* WeatherDemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A0EFFCA1A9BCF1B0041181E /* WeatherDemoTests.swift */; };
 		1A0EFFD51A9BCF4F0041181E /* WeatherService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A0EFFD41A9BCF4F0041181E /* WeatherService.swift */; };
 		1A0EFFD91A9BE2DD0041181E /* WeatherReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A0EFFD81A9BE2DD0041181E /* WeatherReport.swift */; };
+		1A2847311A9C248400D5C72D /* LaunchMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2847301A9C248400D5C72D /* LaunchMenu.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +47,7 @@
 		1A0EFFCA1A9BCF1B0041181E /* WeatherDemoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherDemoTests.swift; sourceTree = "<group>"; };
 		1A0EFFD41A9BCF4F0041181E /* WeatherService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WeatherService.swift; path = Source/WeatherService.swift; sourceTree = "<group>"; };
 		1A0EFFD81A9BE2DD0041181E /* WeatherReport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WeatherReport.swift; path = Source/WeatherReport.swift; sourceTree = "<group>"; };
+		1A2847301A9C248400D5C72D /* LaunchMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LaunchMenu.swift; path = Source/LaunchMenu.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,9 +148,18 @@
 		1A0EFFD71A9BE2C90041181E /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				1A28472F1A9C247000D5C72D /* LaunchMenu */,
 				1A0EFFD81A9BE2DD0041181E /* WeatherReport.swift */,
 			);
 			name = Models;
+			sourceTree = "<group>";
+		};
+		1A28472F1A9C247000D5C72D /* LaunchMenu */ = {
+			isa = PBXGroup;
+			children = (
+				1A2847301A9C248400D5C72D /* LaunchMenu.swift */,
+			);
+			name = LaunchMenu;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -254,6 +265,7 @@
 				1A0EFFB71A9BCF1B0041181E /* WeatherDisplayViewController.swift in Sources */,
 				1A0EFFD51A9BCF4F0041181E /* WeatherService.swift in Sources */,
 				1A02F9B91A9C18A20032E483 /* WeatherServiceForcastIODataAdaptor.swift in Sources */,
+				1A2847311A9C248400D5C72D /* LaunchMenu.swift in Sources */,
 				1A02F9BC1A9C1A5F0032E483 /* WeatherServicePreparedDataAdaptor.swift in Sources */,
 				1A02F9BE1A9C1AC60032E483 /* LaunchMenuViewController.swift in Sources */,
 				1A0EFFD91A9BE2DD0041181E /* WeatherReport.swift in Sources */,

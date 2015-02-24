@@ -4,6 +4,10 @@ class LaunchMenuViewController: UITableViewController, UITableViewDataSource, UI
     
     let launchMenu: LaunchMenu
     
+    override convenience init() {
+        self.init(launchMenu: LaunchMenu(sections: []))
+    }
+    
     required init(launchMenu: LaunchMenu) {
         self.launchMenu = launchMenu
         super.init(style: .Grouped)
@@ -16,10 +20,9 @@ class LaunchMenuViewController: UITableViewController, UITableViewDataSource, UI
     // Need this to prevent runtime error:
     // fatal error: use of unimplemented initializer 'init(nibName:bundle:)'
     // I made this private since users should use the no-argument constructor.
-    private override init(nibName nibNameOrNil: String!, bundle nibBundleOrNil: NSBundle!) {
-        self.launchMenu = LaunchMenu(sections: [])
-        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-    }
+//    private override init(nibName nibNameOrNil: String!, bundle nibBundleOrNil: NSBundle!) {
+//        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+//    }
     
     // MARK - UIViewController
     

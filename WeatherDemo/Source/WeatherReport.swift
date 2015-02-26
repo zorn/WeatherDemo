@@ -1,4 +1,4 @@
-import Foundation
+import UIKit
 
 enum WeatherReportIcon : String {
     case ClearDay = "clear-day"
@@ -11,14 +11,21 @@ enum WeatherReportIcon : String {
     case Cloudy = "cloudy"
     case PartlyCloudyDay = "partly-cloudy-day"
     case PartlyCloudyNight = "partly-cloudy-night"
-    case Unknwon = "unknown"
 }
 
 struct WeatherReport {
     
-    let time: NSDate
+    let date: NSDate
     let summary: String
     let temperature: Double
-    let icon: WeatherReportIcon
+    let icon: WeatherReportIcon?
+    
+    func iconImage() -> UIImage? {
+        if let icon = icon {
+            let filename = "\(icon.rawValue).jpg"
+            return UIImage(named: filename)
+        }
+        return nil
+    }
     
 }

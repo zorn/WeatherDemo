@@ -29,6 +29,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let item1 = LaunchMenuItem(title: "Network", details: "Using the real network service") { () -> () in
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let vc = storyboard.instantiateInitialViewController() as WeatherDisplayViewController
+            
+            // d40ec55206d45f90b1bfe8b40e4c7520
+            
             self.window?.rootViewController = vc
         }
         return LaunchMenuSection(title: "Main", items: [item1])

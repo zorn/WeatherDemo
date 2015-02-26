@@ -9,13 +9,16 @@ protocol WeatherServiceDataSource {
     func fetchWeatherReport(#latitude: Double, longitude: Double, completion: (result: WeatherServiceFetchResult) -> Void)
 }
 
-// https://api.forecast.io/forecast/d40ec55206d45f90b1bfe8b40e4c7520/39.950869,-75.145728
-
 struct WeatherService : WeatherServiceDataSource {
     
+    let dataAdaptor: WeatherServiceDataSource
+    
+    init(dataAdaptor: WeatherServiceDataSource) {
+        self.dataAdaptor = dataAdaptor
+    }
+    
     func fetchWeatherReport(#latitude: Double, longitude: Double, completion: (result: WeatherServiceFetchResult) -> Void) {
-        let report = WeatherReport(time: NSDate(), summary: "Mostly Cloudy", temperature: 21.43, icon: WeatherReportIcon.Snow)
-        completion(result: WeatherServiceFetchResult.Success(report))
+        self.dataAdaptor.fetchWeatherReport(latitude: latitude, longitude: longitude, completion: completion)
     }
     
 }

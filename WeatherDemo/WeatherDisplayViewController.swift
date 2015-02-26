@@ -9,41 +9,66 @@ class WeatherDisplayViewController : UIViewController {
     @IBOutlet weak var temperatureLabel: UILabel!
     @IBOutlet weak var summaryLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var imageView: UIImageView!
     
     // MARK: - UIViewController
     
     override func viewDidLoad() {
-        weatherService = WeatherService()
-        dateFormatter = NSDateFormatter()
-        dateFormatter?.dateStyle = NSDateFormatterStyle.MediumStyle
-        dateFormatter?.timeStyle = NSDateFormatterStyle.NoStyle
+        configureDateFormatter()
         super.viewDidLoad()
     }
     
     override func viewWillAppear(animated: Bool) {
+        loadFreshWeatherReport()
+        super.viewWillAppear(animated)
+    }
+    
+    // MARK: - Actions
+    
+    @IBAction func buttonAction(sender: AnyObject) {
+        loadFreshWeatherReport()
+    }
+    
+    // MARK: - Private
+    
+    func configureDateFormatter() {
+        dateFormatter = NSDateFormatter()
+        dateFormatter?.dateStyle = NSDateFormatterStyle.MediumStyle
+        dateFormatter?.timeStyle = NSDateFormatterStyle.MediumStyle
+    }
+    
+    func loadFreshWeatherReport() {
         if let service = weatherService {
+            self.updateUI(showLoadingText: true)
             service.fetchWeatherReport(latitude: 1.1, longitude: 1.1) { (result: WeatherServiceFetchResult) in
                 switch result {
                 case .Success(let report):
                     self.currentReport = report
-                    self.updateUI()
+                    self.updateUI(showLoadingText: false)
                 case .Failure(let error):
                     println("Fetch failed with error: \(error.localizedDescription)")
                 }
             }
         }
-        super.viewWillAppear(animated)
     }
     
-    // MARK: - Private
-    
-    func updateUI() {
+    func updateUI(#showLoadingText: Bool) {
+        if showLoadingText {
+            self.temperatureLabel.text = "Loading..."
+            self.summaryLabel.text = nil
+            self.dateLabel.text = nil
+            return // bail
+        }
+        
         if let report = currentReport {
             dispatch_async(dispatch_get_main_queue(), {
                 let displayTemp = String(format: "%.0f", report.temperature)
-                self.temperatureLabel.text = "\(displayTemp)°"
+                self.temperatureLabel.text = "\(displayTemp)"
                 self.summaryLabel.text = report.summary
-                self.dateLabel.text = self.dateFormatter?.stringFromDate(report.time)
+                self.dateLabel.text = self.dateFormatter?.stringFromDate(report.date)
+                if let image = report.iconImage() {
+                    self.imageView.image = image
+                }
             })
         }
     }

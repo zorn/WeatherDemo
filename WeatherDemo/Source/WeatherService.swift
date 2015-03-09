@@ -11,14 +11,14 @@ protocol WeatherServiceDataSource {
 
 struct WeatherService : WeatherServiceDataSource {
     
-    let dataAdaptor: WeatherServiceDataSource
+    let dataSource: WeatherServiceDataSource
     
-    init(dataAdaptor: WeatherServiceDataSource) {
-        self.dataAdaptor = dataAdaptor
+    init(dataSource: WeatherServiceDataSource) {
+        self.dataSource = dataSource
     }
     
     func fetchWeatherReport(#latitude: Double, longitude: Double, completion: (result: WeatherServiceFetchResult) -> Void) {
-        self.dataAdaptor.fetchWeatherReport(latitude: latitude, longitude: longitude, completion: completion)
+        self.dataSource.fetchWeatherReport(latitude: latitude, longitude: longitude, completion: completion)
     }
     
 }

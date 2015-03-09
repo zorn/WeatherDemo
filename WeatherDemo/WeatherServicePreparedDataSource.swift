@@ -1,6 +1,6 @@
 import Foundation
 
-class WeatherServicePreparedDataAdaptor : WeatherServiceDataSource {
+class WeatherServicePreparedDataSource : WeatherServiceDataSource {
     
     func fetchWeatherReport(#latitude: Double, longitude: Double, completion: (result: WeatherServiceFetchResult) -> Void) {
         let report = WeatherReport(date: NSDate(), summary: "Mostly Cloudy", temperature: 21.43, icon: WeatherReportIcon.Snow)

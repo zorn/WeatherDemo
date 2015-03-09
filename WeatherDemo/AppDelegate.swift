@@ -2,7 +2,9 @@ import UIKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
+    
+    // TODO: Move API key to more reasonable locaotion
+    let forcastIOAPIKey = "d40ec55206d45f90b1bfe8b40e4c7520"
     var window: UIWindow?
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
@@ -29,8 +31,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let item1 = LaunchMenuItem(title: "Network", details: "Using the real network service") { () -> () in
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let vc = storyboard.instantiateInitialViewController() as WeatherDisplayViewController
-            
-            // d40ec55206d45f90b1bfe8b40e4c7520
+            let dataSource = WeatherServiceForcastIODataSource(APIKey: self.forcastIOAPIKey)
+            vc.weatherService = WeatherService(dataSource: dataSource)
             
             self.window?.rootViewController = vc
         }

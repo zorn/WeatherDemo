@@ -1,10 +1,6 @@
 import Foundation
 
-extension NSError {
-    class func weatherServiceNoDataError() -> NSError {
-        return NSError(domain: "com.mikezornek.WeatherDemo.WeatherServiceForcastIODataSource", code: 1001, userInfo: [NSLocalizedDescriptionKey: "No data returned."])
-    }
-}
+
 
 // Sample: https://api.forecast.io/forecast/d40ec55206d45f90b1bfe8b40e4c7520/39.950869,-75.145728
 

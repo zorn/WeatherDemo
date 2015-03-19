@@ -56,4 +56,13 @@ class LaunchMenuViewController: UITableViewController, UITableViewDataSource, UI
         }
     }
     
+    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        if let section = launchMenu?.sections[section] {
+            return section.title
+        } else {
+            return nil
+        }
+    }
+
+    
 }

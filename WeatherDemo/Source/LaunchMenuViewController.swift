@@ -8,7 +8,6 @@ class LaunchMenuViewController: UITableViewController, UITableViewDataSource, UI
     
     override func viewDidLoad() {
         self.title = "Menu"
-        self.tableView.registerClass(UITableViewCell.classForCoder(), forCellReuseIdentifier: "Basic")
         super.viewDidLoad()
     }
     
@@ -31,21 +30,24 @@ class LaunchMenuViewController: UITableViewController, UITableViewDataSource, UI
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var returnCell: UITableViewCell?
+        if let cell = tableView.dequeueReusableCellWithIdentifier("MenuCell") as? UITableViewCell {
+            configureCell(cell, indexPath: indexPath)
+            return cell
+        } else {
+            let cell = UITableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: "MenuCell")
+            configureCell(cell, indexPath: indexPath)
+            return cell
+        }
+    }
+    
+    func configureCell(cell: UITableViewCell, indexPath: NSIndexPath) {
         if let item = launchMenu?.sections[indexPath.section].items[indexPath.row] {
-            if let cell = tableView.dequeueReusableCellWithIdentifier("Basic", forIndexPath: indexPath) as? UITableViewCell {
-                cell.textLabel?.text = item.title
-                cell.detailTextLabel?.text = item.details
-                cell.accessoryType = .DisclosureIndicator
-                return cell
-            }
+            cell.textLabel?.text = item.title
+            cell.detailTextLabel?.text = item.details
+            cell.accessoryType = .DisclosureIndicator
+        } else {
+            println("ERROR: Could not find menu item to configure cell with.")
         }
-        
-        if returnCell == nil {
-            returnCell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "Bug")
-            returnCell?.textLabel?.text = "Could not build cell for item at indexPath: \(indexPath)"
-        }
-        return returnCell!
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {

@@ -1,5 +1,11 @@
 import Foundation
 
+extension NSError {
+    class func weatherServiceNoDataError() -> NSError {
+        return NSError(domain: "com.mikezornek.WeatherDemo.WeatherServiceForcastIODataSource", code: 1001, userInfo: [NSLocalizedDescriptionKey: "No data returned."])
+    }
+}
+
 // Sample: https://api.forecast.io/forecast/d40ec55206d45f90b1bfe8b40e4c7520/39.950869,-75.145728
 
 struct WeatherServiceForcastIODataSource : WeatherServiceDataSource {
@@ -15,7 +21,7 @@ struct WeatherServiceForcastIODataSource : WeatherServiceDataSource {
         let session = NSURLSession(configuration: NSURLSessionConfiguration.defaultSessionConfiguration())
         let escapedAPIKey = APIKey.stringByAddingPercentEncodingWithAllowedCharacters(.URLHostAllowedCharacterSet())
         // TODO: Honor incomming lat and lon, for now hardcode to IndyHall
-        let url = NSURL(string: "https://api.forecast.io/forecast/\(escapedAPIKey)/39.950869/-75.145728")
+        let url = NSURL(string: "https://api.forecast.io/forecast/\(escapedAPIKey!)/39.950869,-75.145728")
         let request = NSURLRequest(URL: url!)
         let dataTask = session.dataTaskWithRequest(request) { (data, response, error) in
             if data != nil {
@@ -27,10 +33,10 @@ struct WeatherServiceForcastIODataSource : WeatherServiceDataSource {
                     completion(result: WeatherServiceFetchResult.Failure(parseError))
                 }
             } else {
-                println("No data was retuend from the request.")
+                completion(result: WeatherServiceFetchResult.Failure(NSError.weatherServiceNoDataError()))
             }
         }
+        dataTask.resume()
     }
     
-        
 }

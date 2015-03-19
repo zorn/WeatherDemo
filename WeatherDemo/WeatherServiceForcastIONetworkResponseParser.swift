@@ -17,7 +17,7 @@ struct WeatherServiceForacstIONetworkResponseParser {
         var jsonError: NSError?
         if let jsonObject = NSJSONSerialization.JSONObjectWithData(data, options: nil, error: &jsonError) as? [String:AnyObject] {
             
-            if let currentInfo = jsonObject["curently"] as? [String:AnyObject] {
+            if let currentInfo = jsonObject["currently"] as? [String:AnyObject] {
                 // TODO: This style of JSON parsing feels too risky
                 let date = NSDate(timeIntervalSince1970: currentInfo["time"] as NSTimeInterval)
                 let summary = currentInfo["summary"] as String

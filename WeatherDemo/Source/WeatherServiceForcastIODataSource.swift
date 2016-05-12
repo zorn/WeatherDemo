@@ -12,7 +12,7 @@ struct WeatherServiceForcastIODataSource : WeatherServiceDataSource {
         self.APIKey = APIKey
     }
     
-    func fetchWeatherReport(#latitude: Double, longitude: Double, completion: (result: WeatherServiceFetchResult) -> Void) {
+    func fetchWeatherReport(latitude: Double, longitude: Double, completion: (result: WeatherServiceFetchResult) -> Void) {
         
         let session = NSURLSession(configuration: NSURLSessionConfiguration.defaultSessionConfiguration())
         let escapedAPIKey = APIKey.stringByAddingPercentEncodingWithAllowedCharacters(.URLHostAllowedCharacterSet())
@@ -21,7 +21,7 @@ struct WeatherServiceForcastIODataSource : WeatherServiceDataSource {
         let request = NSURLRequest(URL: url!)
         let dataTask = session.dataTaskWithRequest(request) { (data, response, error) in
             if data != nil {
-                let parseResponse = WeatherServiceForacstIONetworkResponseParser.parseResponseData(data)
+                let parseResponse = WeatherServiceForacstIONetworkResponseParser.parseResponseData(data!)
                 switch parseResponse {
                 case .Success(let parseReport):
                     completion(result: WeatherServiceFetchResult.Success(parseReport))

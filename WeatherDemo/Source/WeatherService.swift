@@ -6,7 +6,7 @@ enum WeatherServiceFetchResult {
 }
 
 protocol WeatherServiceDataSource {
-    func fetchWeatherReport(#latitude: Double, longitude: Double, completion: (result: WeatherServiceFetchResult) -> Void)
+    func fetchWeatherReport(latitude: Double, longitude: Double, completion: (result: WeatherServiceFetchResult) -> Void)
 }
 
 struct WeatherService : WeatherServiceDataSource {
@@ -17,8 +17,8 @@ struct WeatherService : WeatherServiceDataSource {
         self.dataSource = dataSource
     }
     
-    func fetchWeatherReport(#latitude: Double, longitude: Double, completion: (result: WeatherServiceFetchResult) -> Void) {
-        self.dataSource.fetchWeatherReport(latitude: latitude, longitude: longitude, completion: completion)
+    func fetchWeatherReport(latitude: Double, longitude: Double, completion: (result: WeatherServiceFetchResult) -> Void) {
+        self.dataSource.fetchWeatherReport(latitude, longitude: longitude, completion: completion)
     }
     
 }

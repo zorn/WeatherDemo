@@ -9,7 +9,7 @@ struct WeatherServicePreparedDataSource : WeatherServiceDataSource {
         self.fetchWeatherReportResponse = fetchWeatherReportResponse
     }
     
-    func fetchWeatherReport(#latitude: Double, longitude: Double, completion: (result: WeatherServiceFetchResult) -> Void) {
+    func fetchWeatherReport(latitude: Double, longitude: Double, completion: (result: WeatherServiceFetchResult) -> Void) {
         dispatch_after(delayTime, dispatch_get_main_queue()) { () -> Void in
             if let response = self.fetchWeatherReportResponse {
                 completion(result: response)

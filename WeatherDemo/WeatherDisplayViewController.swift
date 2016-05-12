@@ -39,20 +39,20 @@ class WeatherDisplayViewController : UIViewController {
     
     func loadFreshWeatherReport() {
         if let service = weatherService {
-            self.updateUI(showLoadingText: true)
-            service.fetchWeatherReport(latitude: 1.1, longitude: 1.1) { (result: WeatherServiceFetchResult) in
+            self.updateUI(true)
+            service.fetchWeatherReport(1.1, longitude: 1.1) { (result: WeatherServiceFetchResult) in
                 switch result {
                 case .Success(let report):
                     self.currentReport = report
-                    self.updateUI(showLoadingText: false)
+                    self.updateUI(false)
                 case .Failure(let error):
-                    println("Fetch failed with error: \(error.localizedDescription)")
+                    print("Fetch failed with error: \(error.localizedDescription)")
                 }
             }
         }
     }
     
-    func updateUI(#showLoadingText: Bool) {
+    func updateUI(showLoadingText: Bool) {
         if showLoadingText {
             self.temperatureLabel.text = "Loading..."
             self.summaryLabel.text = nil

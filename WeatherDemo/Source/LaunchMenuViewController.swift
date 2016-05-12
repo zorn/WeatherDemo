@@ -1,6 +1,6 @@
 import UIKit
 
-class LaunchMenuViewController: UITableViewController, UITableViewDataSource, UITableViewDelegate {
+class LaunchMenuViewController: UITableViewController {
     
     var launchMenu: LaunchMenu?
     
@@ -30,7 +30,7 @@ class LaunchMenuViewController: UITableViewController, UITableViewDataSource, UI
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        if let cell = tableView.dequeueReusableCellWithIdentifier("MenuCell") as? UITableViewCell {
+        if let cell = tableView.dequeueReusableCellWithIdentifier("MenuCell") {
             configureCell(cell, indexPath: indexPath)
             return cell
         } else {
@@ -46,7 +46,7 @@ class LaunchMenuViewController: UITableViewController, UITableViewDataSource, UI
             cell.detailTextLabel?.text = item.details
             cell.accessoryType = .DisclosureIndicator
         } else {
-            println("ERROR: Could not find menu item to configure cell with.")
+            print("ERROR: Could not find menu item to configure cell with.")
         }
     }
     

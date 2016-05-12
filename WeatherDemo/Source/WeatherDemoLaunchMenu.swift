@@ -19,7 +19,7 @@ struct WeatherDemoLaunchMenuFactory {
     func launchMenuMainSection1() -> LaunchMenuSection {
         let item1 = LaunchMenuItem(title: "Network", details: "Using the real Forcast.io service") { () -> () in
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let vc = storyboard.instantiateInitialViewController() as WeatherDisplayViewController
+            let vc = storyboard.instantiateInitialViewController() as! WeatherDisplayViewController
             let dataSource = WeatherServiceForcastIODataSource(APIKey: self.forcastIOAPIKey)
             vc.weatherService = WeatherService(dataSource: dataSource)
             
@@ -41,7 +41,7 @@ struct WeatherDemoLaunchMenuFactory {
     func launchMenuItemForReport(report: WeatherReport, details: String) -> LaunchMenuItem {
         let item = LaunchMenuItem(title: report.summary, details: details) { () -> () in
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let vc = storyboard.instantiateInitialViewController() as WeatherDisplayViewController
+            let vc = storyboard.instantiateInitialViewController() as! WeatherDisplayViewController
             let dataSource = WeatherServicePreparedDataSource(fetchWeatherReportResponse: WeatherServiceFetchResult.Success(report))
             vc.weatherService = WeatherService(dataSource: dataSource)
             self.window?.rootViewController = vc

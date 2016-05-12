@@ -15,14 +15,14 @@ struct WeatherServiceForacstIONetworkResponseParser {
     
     static func parseResponseData(data: NSData) -> WeatherServiceParseResult {
         var jsonError: NSError?
-        if let jsonObject = NSJSONSerialization.JSONObjectWithData(data, options: nil, error: &jsonError) as? [String:AnyObject] {
+        if let jsonObject = try! NSJSONSerialization.JSONObjectWithData(data, options: []) as? [String:AnyObject] {
             
             if let currentInfo = jsonObject["currently"] as? [String:AnyObject] {
                 // TODO: This style of JSON parsing feels too risky
-                let date = NSDate(timeIntervalSince1970: currentInfo["time"] as NSTimeInterval)
-                let summary = currentInfo["summary"] as String
-                let temperature = currentInfo["temperature"] as Double
-                let icon = WeatherReportIcon(rawValue: currentInfo["icon"] as String)
+                let date = NSDate(timeIntervalSince1970: currentInfo["time"] as! NSTimeInterval)
+                let summary = currentInfo["summary"] as! String
+                let temperature = currentInfo["temperature"] as! Double
+                let icon = WeatherReportIcon(rawValue: currentInfo["icon"] as! String)
                 let newReport = WeatherReport(date: date, summary: summary, temperature: temperature, icon: icon)
                 return WeatherServiceParseResult.Success(newReport)
             }

@@ -1,7 +1,5 @@
 import Foundation
 
-
-
 // Sample: https://api.forecast.io/forecast/d40ec55206d45f90b1bfe8b40e4c7520/39.950869,-75.145728
 
 struct WeatherServiceForcastIODataSource : WeatherServiceDataSource {

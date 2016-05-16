@@ -1,6 +1,6 @@
 # WeatherDemo
 
-
+WeatherDemo is a small iOS app (recently updated to Swift 2.2) that helps demonstrait some code pattern ideas (eg: Launch Menu, Dependancy Injection, Using Multiple DataSources) which were dicussed in a presentation by Michael Zornek called [Code Patterns](https://speakerdeck.com/zorn/some-code-patterns). 
 
 ## Art
 
